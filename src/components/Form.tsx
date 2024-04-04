@@ -19,10 +19,10 @@ const initialState : Activity = {
 export default function Form({dispatch, state} : FormProps) {
   const [activity, setActivity] = useState<Activity>(initialState);
   const handleChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
-    // const isNumberField = ['category','calories'].includes(e.target.id)
+    const isNumberField = ['category','calories'].includes(e.target.id)
     setActivity({
         ...activity,
-        [e.target.id]: e.target.value
+        [e.target.id]: isNumberField ? +e.target.value : e.target.value
     })
   }
 
@@ -57,7 +57,7 @@ export default function Form({dispatch, state} : FormProps) {
         </label>
         <select
           id="category"
-          value={activity.category}
+          value={+activity.category}
           className="border border-slate-300 p-2 rounded-lg w-full bg-white"
           onChange={ handleChange}
         >

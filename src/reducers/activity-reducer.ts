@@ -26,7 +26,7 @@ export const initialState : ActivityState = {
     activeId: ''
 }
 
-export const activityReducer = ( state: ActivityState, action: ActivityActions ) => {
+export const activityReducer = ( state: ActivityState = initialState, action: ActivityActions ) => {
 
     if(action.type === 'save-activity'){
         //Este codigo manejala logica para actualizar el state
